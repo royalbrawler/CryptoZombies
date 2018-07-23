@@ -21,6 +21,7 @@ contract ZombieFactory {
     // view - it's only viewing the data but not modifying it
     // pure - not even accessing any data in the app
     function _generateRandomDna(string _str) private view returns (uint) {
-        
+        uint rand = uint(keccak256(_str));
+        return rand % dnaModulus; // 16 digits long
     }
 }
