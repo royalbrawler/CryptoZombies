@@ -3,6 +3,9 @@ pragma solidity ^0.4.19;
 
 //2. Create contract here
 contract ZombieFactory {
+
+    event NewZombie(uint zombieId, string name, uint dna);
+
     // This will be stored permanently in the blockchain
     uint dnaDigits = 16;
     uint dnaModulus = 10 ** dnaDigits; // equal to 10^16
@@ -15,7 +18,8 @@ contract ZombieFactory {
     Zombie[] public zombies;
 
     function _createZombie(string _name, uint _dna) private {
-        zombies.push(Zombie(_name, _dna));
+        uint id = zombies.push(Zombie(_name, _dna)) - 1;
+        NewZombie(id, _name, _dna);
     }
 
     // view - it's only viewing the data but not modifying it
