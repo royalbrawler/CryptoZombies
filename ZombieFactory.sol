@@ -45,5 +45,5 @@ contract ZombieFactory {
 
 // inherits ZombieFactory
 contract ZombieFeeding is ZombieFactory {
-
+    
 }
