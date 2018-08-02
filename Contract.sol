@@ -42,3 +42,8 @@ contract ZombieFactory {
         _createZombie(_name, randDna);
     }
 }
+
+// inherits ZombieFactory
+contract ZombieFeeding is ZombieFactory {
+
+}
