@@ -9,7 +9,9 @@ contract ZombieFeeding is ZombieFactory {
         // storage - written permanently to the blockchain
         // memory - will disappear when the function call ends
         Zombie storage myZombie = zombies[_zombieId];
-
+        _targetDna = _targetDna % dnaModulus;
+        uint newDna = (myZombie.dna + _targetDna) / 2;
+        _createZombie("NoName", newDna); 
     }
     
 }
