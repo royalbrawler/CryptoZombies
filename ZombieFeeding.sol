@@ -32,7 +32,7 @@ contract ZombieFeeding is ZombieFactory {
         uint newDna = (myZombie.dna + _targetDna) / 2;
         // comparing hashes
         if(keccak256(_species) == keccak256("kitty")){
-            // gives 9 lives ,bc cats have 9 lives
+            // 99 - indicates that is a cat-zombie(VFX) eater thingy 
             // example - 334455 >> (newDna % 100) = 334400 >> +99 = 334499
             newDna = newDna - newDna % 100 + 99;
         }
