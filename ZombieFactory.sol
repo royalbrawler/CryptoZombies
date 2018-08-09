@@ -1,8 +1,10 @@
 //1. Enter solidity version here
 pragma solidity ^0.4.19;
 
+import "./ownable.sol";
+
 //2. Create contract here
-contract ZombieFactory {
+contract ZombieFactory is Ownable{
 
     event NewZombie(uint zombieId, string name, uint dna);
 
