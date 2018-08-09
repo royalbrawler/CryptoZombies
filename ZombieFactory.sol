@@ -4,7 +4,7 @@ pragma solidity ^0.4.19;
 import "./ownable.sol";
 
 //2. Create contract here
-contract ZombieFactory is Ownable{
+contract ZombieFactory is Ownable {
 
     event NewZombie(uint zombieId, string name, uint dna);
 
