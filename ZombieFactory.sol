@@ -18,6 +18,8 @@ contract ZombieFactory is Ownable {
         uint dna;
         uint32 level;
         uint32 readyTime;
+        uint16 winCount;
+        uint16 lossCount;
     }
 
     Zombie[] public zombies;
@@ -28,7 +30,7 @@ contract ZombieFactory is Ownable {
 
     //internal - accessible to contracts that inherit from this contract
     function _createZombie(string _name, uint _dna) internal {
-        uint id = zombies.push(Zombie(_name, _dna, 1, uint32(now + cooldownTime))) - 1;
+        uint id = zombies.push(Zombie(_name, _dna, 1, uint32(now + cooldownTime), 0, 0)) - 1;
         //msg.sender = address of the person
         zombieToOwner[id] = msg.sender;
         ownerZombieCount[msg.sender]++;
@@ -36,7 +38,7 @@ contract ZombieFactory is Ownable {
     }
 
     // view - it's only viewing the data but not modifying it
-    // pure - not even accessing any data in the app
+    // pure - not even accessing any data from the blockchain
     function _generateRandomDna(string _str) private view returns (uint) {
         uint rand = uint(keccak256(_str));
         return rand % dnaModulus; // 16 digits long
